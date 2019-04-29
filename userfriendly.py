@@ -1,5 +1,7 @@
 from random import randint
 cost = 0
+"""
+# Random variables
 n = randint(300, 1001)
 d = randint(3, 10)
 g = randint(96, 100)
@@ -7,6 +9,33 @@ k = randint(88, 93)
 w = randint(78, 85)
 m = randint(50, 101)
 s = randint(2, 7)
+"""
+mode = int(input('Would you like to use (1) preset or (2) user-chosen variable values? (Type 1 or 2)'))
+if mode == 1:
+    n = 444
+    d = 4
+    g = 98
+    k = 89
+    w = 80
+    m = 64
+    s = 6
+elif mode == 2:
+    n = int(input('What n value? (Int 299<n<1001)'))
+    assert (n in range(300, 1001)), '{0} is not (Int 299<n<1001)'.format(n)
+    d = int(input('What d value? (Int 2<d<10)'))
+    assert (d in range(3, 10)), '{0} is not (Int 2<d<10)'.format(d)
+    g = int(input('What g value? (Int 95<g<100)'))
+    assert (g in range(96, 100)), '{0} is not (Int 95<g<100)'.format(g)
+    k = int(input('What k value? (Int 87<k<93)'))
+    assert (k in range(88, 93)), '{0} is not (Int 87<k<93)'.format(k)
+    w = int(input('What w value? (Int 77<w<85)'))
+    assert (w in range(78, 85)), '{0} is not (Int 77<w<85)'.format(w)
+    m = int(input('What m value? (Int 49<m<101)'))
+    assert (m in range(50, 101)), '{0} is not (Int 49<m<101)'.format(m)
+    s = int(input('What n value? (Int 1<s<7)'))
+    assert (s in range(2, 7)), '{0} is not (Int 1<s<7)'.format(s)
+else:
+    Exception('{0} is not 1 or 2. Choose 1 or 2'.format(mode))
 masterMechanic = False
 
 print('n = ' + str(n))
