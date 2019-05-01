@@ -1,4 +1,4 @@
-trials = 100000
+trials = 10000
 from random import randint
 def go(strategy, samples, mode, n, d, g, k, w, m, s):
     cost = 0
