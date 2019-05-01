@@ -1,7 +1,5 @@
 trials = 100000
 from random import randint
-import matplotlib.pyplot as plt
-import pandas as pd
 def go(strategy, samples, mode, n, d, g, k, w, m, s):
     cost = 0
     """
@@ -115,19 +113,14 @@ def display(mode):
         strategy31s.append(trial31)
         strategy32s.append(trial32)
         strategy33s.append(trial33)
-        strategies.append((trial1, trial2, trial31, trial32, trial33))
-    strategiesdf = pd.DataFrame(strategies)
     if mode == 1:
-        print('SIMULATION RESULTS USING PRESET VARIABLE VALUES')
+        print('SIMULATION RESULTS USING PRESET VARIABLE VALUES OVER ' + str(trials) + ' TRIALS')
     elif mode == 2:
-        print("SIMULATION RESULTS USING USER'S VARIABLE VALUES") 
-        
+        print("SIMULATION RESULTS USING USER'S VARIABLE VALUES OVER " + str(trials) + ' TRIALS')
     print('Strategy 1 average cost: $' + str(sum(strategy1s) / trials))
     print('Strategy 2 average cost: $' + str(sum(strategy2s) / trials))
     print('Strategy 3 with 1 sample average cost: $' + str(sum(strategy31s) / trials))
     print('Strategy 3 with 2 samples average cost: $' + str(sum(strategy32s) / trials))
     print('Strategy 3 with 3 samples average cost: $' + str(sum(strategy33s) / trials))
-    strategiesdf.columns=['Strategy 1 Cost in $', 'Strategy 2 Cost in $', 'Strategy 3 Cost in $ with 1 Sample', 'Strategy 3 Cost in $ with 2 Samples', 'Strategy 3 Cost in $ with 3 Samples']
-    return strategiesdf
 run = int(input('Would you like to run the simulation with (1) preset variable values or (2) user-chosen variable values? Choose 1 or 2.'))
 display(run)
