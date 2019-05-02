@@ -1,17 +1,18 @@
+print("""
+Welcome to Tom and Andrew's Machine Problem Simulation
+This program performs a single production run of the desired strategy and number of sample parts.
+The user may input their own variable values or use the preset ones used in our project writeup.
+To see the code and comments for this program, please press the "edit" button in the top left.
+""")
+
 trials = 10000
 from random import randint
+
+# main function of the program
+# accounts for the chosen simulation option, setting pre-set values if desired
+# or leaving the variables as is if they were already chosen by the user
 def go(strategy, samples, mode, n, d, g, k, w, m, s):
     cost = 0
-    """
-    # Random variables
-    n = randint(300, 1001)
-    d = randint(3, 10)
-    g = randint(96, 100)
-    k = randint(88, 93)
-    w = randint(78, 85)
-    m = randint(50, 101)
-    s = randint(2, 7)
-    """
     if mode == 1:
         n = 444
         d = 4
@@ -24,8 +25,9 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
         dummy = 'dummy'
     else:
         Exception('{0} is not 1 or 2. Choose 1 or 2'.format(mode))
-    
     masterMechanic = False
+    
+    # randomly sets the number of correct adjustments at the beginning of the production run
     adjustments = randint(1, 101)
     if adjustments in range(1, 81):
         goodAdjustments = 2
@@ -33,6 +35,9 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
         goodAdjustments = 1
     else:
         goodAdjustments = 0
+    
+    # accounts for each strategy, modifying the cost depending on whether the mechanic is called
+    # or for however many samples are taken
     if strategy == 1:
         masterMechanic = True
         cost += m
@@ -40,8 +45,8 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
         dummy = 'dummy'
     elif strategy == 3:
         assert (samples > 0), '{0} is not a number > 0'.format(samples)
-        for x in range(5):
-            cost += samples * s
+        cost += samples * s
+        for x in range(samples):
             if goodAdjustments == 2:
                 if randint(1, 101) in range(1, 100 - g):
                     masterMechanic = True
@@ -53,9 +58,12 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
                     masterMechanic = True
     else:
         raise Exception('{0} is not a viable strategy. Choose 1, 2, or 3'.format(strategy))
+    
+    # having the mechanic sets the adjustments correctly here
     if masterMechanic == True:
         goodAdjustments = 2
-    # cost of hand fitting defective parts:
+
+    # determines the cost of hand fitting defective parts:
     if goodAdjustments == 2:
         goodParts = n * (g/100)
     elif goodAdjustments == 1:
@@ -66,7 +74,8 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
     cost += d * badParts
     return cost
 
-
+# choose() function asks the user for which values they wish to choose
+# called upon
 def choose():
     n = int(input('What n value? (Int 299<n<1001)'))
     assert (n in range(300, 1001)), '{0} is not (Int 299<n<1001)'.format(n)
@@ -84,7 +93,9 @@ def choose():
     assert (s in range(2, 7)), '{0} is not (Int 1<s<7)'.format(s)
     return n, d, g, k, w, m, s
 
-
+# takes into account the simulation option, calling choose() for user-chosen variables
+# then loops for the number trials to make productions runs of each strategy, appending
+# found values into lists
 def display(mode):
     if mode == 2:
         n, d, g, k, w, m, s = choose()
@@ -113,6 +124,8 @@ def display(mode):
         strategy31s.append(trial31)
         strategy32s.append(trial32)
         strategy33s.append(trial33)
+        
+    # averages lists of values for each strategy and displays them as the final output
     if mode == 1:
         print('SIMULATION RESULTS USING PRESET VARIABLE VALUES OVER ' + str(trials) + ' TRIALS')
     elif mode == 2:
@@ -122,5 +135,8 @@ def display(mode):
     print('Strategy 3 with 1 sample average cost: $' + str(sum(strategy31s) / trials))
     print('Strategy 3 with 2 samples average cost: $' + str(sum(strategy32s) / trials))
     print('Strategy 3 with 3 samples average cost: $' + str(sum(strategy33s) / trials))
+
+# asks the user for which values, preset as used in the writeup or user-chosen, they want to use
+# calls the display() providing it with the chosen simulation option
 run = int(input('Would you like to run the simulation with (1) preset variable values or (2) user-chosen variable values? Choose 1 or 2.'))
 display(run)

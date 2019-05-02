@@ -1,15 +1,5 @@
 from random import randint
 cost = 0
-"""
-# Random variables
-n = randint(300, 1001)
-d = randint(3, 10)
-g = randint(96, 100)
-k = randint(88, 93)
-w = randint(78, 85)
-m = randint(50, 101)
-s = randint(2, 7)
-"""
 mode = int(input('Would you like to use (1) preset or (2) user-chosen variable values? (Type 1 or 2)'))
 if mode == 1:
     n = 444
@@ -77,8 +67,8 @@ You've chosen strategy #3: run a sample of parts at a cost of ${0} (s) per part
     """.format(s))
     samples = int(input('How many parts do you wish to sample? Choose a number > 0'))
     assert (samples > 0), '{0} is not a number > 0'.format(strategy)
-    for x in range(5):
-        cost += samples * s
+    cost += samples * s
+    for x in range(samples):
         if goodAdjustments == 2:
             if randint(1, 101) in range(1, 100 - g):
                 masterMechanic = True
