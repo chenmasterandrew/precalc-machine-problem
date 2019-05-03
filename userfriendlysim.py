@@ -40,7 +40,6 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
     # or for however many samples are taken
     if strategy == 1:
         masterMechanic = True
-        cost += m
     elif strategy == 2:
         dummy = 'dummy'
     elif strategy == 3:
@@ -48,13 +47,13 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
         cost += samples * s
         for x in range(samples):
             if goodAdjustments == 2:
-                if randint(1, 101) in range(1, 100 - g):
+                if randint(1, 100) in range(1, 101 - g):
                     masterMechanic = True
             elif goodAdjustments == 1:
-                if randint(1, 101) in range(1, 100 - k):
+                if randint(1, 100) in range(1, 101 - k):
                     masterMechanic = True
             else:
-                if randint(1, 101) in range(1, 100 - w):
+                if randint(1, 100) in range(1, 101 - w):
                     masterMechanic = True
     else:
         raise Exception('{0} is not a viable strategy. Choose 1, 2, or 3'.format(strategy))
@@ -62,7 +61,7 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
     # having the mechanic sets the adjustments correctly here
     if masterMechanic == True:
         goodAdjustments = 2
-
+        cost += m
     # determines the cost of hand fitting defective parts:
     if goodAdjustments == 2:
         goodParts = n * (g/100)
