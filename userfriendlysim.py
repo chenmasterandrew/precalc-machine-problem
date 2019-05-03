@@ -5,7 +5,7 @@ The user may input their own variable values or use the preset ones used in our 
 To see the code and comments for this program, please press the "edit" button in the top left.
 """)
 
-trials = 10000
+trials = 100000
 from random import randint
 
 # main function of the program
@@ -28,7 +28,7 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
     masterMechanic = False
     
     # randomly sets the number of correct adjustments at the beginning of the production run
-    adjustments = randint(1, 101)
+    adjustments = randint(1, 100)
     if adjustments in range(1, 81):
         goodAdjustments = 2
     elif adjustments in range(81, 96):
