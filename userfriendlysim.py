@@ -5,7 +5,7 @@ The user may input their own variable values or use the preset ones used in our 
 To see the code and comments for this program, please press the "edit" button in the top left.
 """)
 
-trials = 100000
+trials = 10000
 from random import randint
 
 # main function of the program
