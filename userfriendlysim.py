@@ -76,19 +76,19 @@ def go(strategy, samples, mode, n, d, g, k, w, m, s):
 # choose() function asks the user for which values they wish to choose
 # called upon
 def choose():
-    n = int(input('What n value? (Int 299<n<1001)'))
+    n = int(input('What is the number of parts produced? (n value)? (Int 299<n<1001)'))
     assert (n in range(300, 1001)), '{0} is not (Int 299<n<1001)'.format(n)
     d = int(input('What d value? (Int 2<d<10)'))
     assert (d in range(3, 10)), '{0} is not (Int 2<d<10)'.format(d)
-    g = int(input('What g value? (Int 95<g<100)'))
+    g = int(input('What percentage of parts is good with 2 adjustments (g value)? (Int 95<g<100)'))
     assert (g in range(96, 100)), '{0} is not (Int 95<g<100)'.format(g)
-    k = int(input('What k value? (Int 87<k<93)'))
+    k = int(input('What percentage of parts is good with 1 adjustment (k value)? (Int 87<k<93)'))
     assert (k in range(88, 93)), '{0} is not (Int 87<k<93)'.format(k)
-    w = int(input('What w value? (Int 77<w<85)'))
+    w = int(input('What percentage of parts is good with 0 adjustments (w value)? (Int 77<w<85)'))
     assert (w in range(78, 85)), '{0} is not (Int 77<w<85)'.format(w)
-    m = int(input('What m value? (Int 49<m<101)'))
+    m = int(input('What is the cost of calling a mechanic? (m value)? (Int 49<m<101)'))
     assert (m in range(50, 101)), '{0} is not (Int 49<m<101)'.format(m)
-    s = int(input('What n value? (Int 1<s<7)'))
+    s = int(input('What is the cost per sample part (s value)? (Int 1<s<7)'))
     assert (s in range(2, 7)), '{0} is not (Int 1<s<7)'.format(s)
     return n, d, g, k, w, m, s
 
